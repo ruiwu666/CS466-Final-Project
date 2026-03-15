@@ -1,2 +1,111 @@
-# CS466-Final-Project
-This is Rui's final project for CS466. This project builds a machine learning model to detect student engagement in online learning environments using the DAiSEE dataset. The system analyzes facial expressions and behavioral cues from video to classify engagement levels.
+# EmotiLearn: Multimodal Affect Recognition for Online Learning Environments
+
+**Author:** Rui Wu  
+**Course:** CS466 - Multimodal Interaction and Learning
+**Spring 2026**
+
+## Overview
+
+EmotiLearn is a multimodal affect recognition system that detects educationally-relevant affective states—**Engagement**, **Boredom**, **Confusion**, and **Frustration**—from student video recordings during online learning sessions.
+
+We extract two complementary modalities from video data:
+
+1. **Appearance features**: Face crops processed through a CNN backbone (e.g., ResNet-18) to capture facial expression patterns.
+2. **Geometric features**: Facial landmarks, head pose (pitch/yaw/roll), eye aspect ratio, and mouth aspect ratio extracted via MediaPipe Face Mesh.
+
+The project compares three multimodal fusion strategies: early fusion, late fusion, and attention-based fusion.
+
+## Dataset
+
+We use the [DAiSEE](https://people.iith.ac.in/vineethnb/resources/daisee/index.html) (Dataset for Affective States in E-Environments) dataset:
+
+- 9,068 video snippets (10 seconds each, 30fps, 640x480)
+- 112 subjects in real-world e-learning settings
+- Four affective states labeled on a 0-3 ordinal scale
+- Train/Val/Test split: 5,358 / 1,429 / 2,281
+
+**Note:** The dataset is not included in this repository. Download it from the [official page](https://people.iith.ac.in/vineethnb/resources/daisee/index.html).
+
+## Project Structure
+
+```
+EmoLearn/
+├── preprocessing.py       # Data loading and preprocessing pipeline (Check-In 1)
+├── REPORT.tex             # Project report (ACM LaTeX format)
+├── references.bib         # BibTeX references
+├── README.md              # This file
+├── label_distribution.png # Generated: label distribution plots
+├── sample_frames.png      # Generated: sample extracted frames
+├── face_crops.png         # Generated: face detection/crop demo
+└── face_mesh_demo.png     # Generated: landmark overlay visualization
+```
+
+## Setup
+
+### Requirements
+
+- Python 3.8+
+- OpenCV (`opencv-python`)
+- MediaPipe
+- NumPy
+- Pandas
+- Matplotlib
+
+### Installation
+
+```bash
+pip install opencv-python mediapipe numpy pandas matplotlib
+```
+
+### Data Setup
+
+1. Download DAiSEE from the [official page](https://people.iith.ac.in/vineethnb/resources/daisee/index.html).
+2. Extract the dataset so the folder structure looks like:
+   ```
+   DAiSEE/
+   ├── DataSet/
+   │   ├── Train/
+   │   │   ├── 110001/
+   │   │   │   ├── 1100011001/
+   │   │   │   │   └── 1100011001.avi
+   │   │   │   ├── 1100011002/
+   │   │   │   │   └── 1100011002.avi
+   │   │   │   └── ...
+   │   │   └── ...
+   │   ├── Validation/
+   │   │   └── (same nested structure)
+   │   └── Test/
+   │       └── (same nested structure)
+   └── Labels/
+       ├── TrainLabels.csv
+       ├── ValidationLabels.csv
+       └── TestLabels.csv
+   ```
+3. Update the `DAISEE_ROOT` path in `preprocessing.py` to point to your local copy (e.g., `/Users/apple/Desktop/DAiSEE`).
+
+### Running
+
+Open `preprocessing.py` as a Jupyter notebook (it uses `# %%` cell markers) or run it directly:
+
+```bash
+# As a script
+python preprocessing.py
+
+```
+
+## Check-In 1 Progress
+
+- [x] Dataset selection and exploration
+- [x] Label distribution analysis (confirmed class imbalance)
+- [x] Ethical data statement
+- [x] Problem formulation (X → y)
+- [x] Frame extraction pipeline
+- [x] Modality 1: Face detection and cropping (MediaPipe)
+- [x] Modality 2: Geometric features (landmarks, head pose, EAR, MAR)
+- [x] Full preprocessing pipeline demo
+
+## References
+
+- Gupta et al., "DAiSEE: Towards User Engagement Recognition in the Wild," arXiv:1609.01885, 2016.
+- Liang et al., "Foundations and Trends in Multimodal Machine Learning," 2024.
+- D‘Mello & Graesser, "Dynamics of Affective States during Complex Learning," 2013.
