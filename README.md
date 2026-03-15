@@ -1,4 +1,4 @@
-# Multimodal Affect Recognition for Online Learning Environments
+# Multimodal Emotion Recognition for Online Learning Environments
 
 **Author:** Rui Wu  
 **Course:** CS466 - Multimodal Interaction and Learning
