@@ -1,4 +1,4 @@
-# EmotiLearn: Multimodal Affect Recognition for Online Learning Environments
+# Multimodal Affect Recognition for Online Learning Environments
 
 **Author:** Rui Wu  
 **Course:** CS466 - Multimodal Interaction and Learning
@@ -6,7 +6,7 @@
 
 ## Overview
 
-EmotiLearn is a multimodal affect recognition system that detects educationally-relevant affective states—**Engagement**, **Boredom**, **Confusion**, and **Frustration**—from student video recordings during online learning sessions.
+EmoLearn is a multimodal affect recognition system that detects educationally-relevant affective states—**Engagement**, **Boredom**, **Confusion**, and **Frustration**—from student video recordings during online learning sessions.
 
 We extract two complementary modalities from video data:
 
